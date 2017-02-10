@@ -14,7 +14,7 @@ There are two ways in which this plugin can be installed into the android projec
 
 1.Navigate to the folder where the root config.xml is present.  
 2.Open a command prompt window  
-3.Run the command  ***` cordova plugin add https://github.dev.global.tesco.org/31StoreStock/Newman_App_plugins.git`***  
+3.Run the command  ***` cordova plugin add https://github.com/dotnet-onestop/EMDKBarcodeReader.git`***  
    
 
 ###Adding through config.xml
@@ -23,7 +23,7 @@ There are two ways in which this plugin can be installed into the android projec
 In order to add the plugin to the Android project , in the root config.xml file add the following line .
 
 ```
-<plugin name="EmdkBarcodeReaderPlugin" source="git" spec="https://github.dev.global.tesco.org/31StoreStock/Newman_App_plugins.git"/>
+<plugin name="EmdkBarcodeReaderPlugin" source="git" spec="https://github.com/dotnet-onestop/EMDKBarcodeReader.git"/>
 
 ```
 

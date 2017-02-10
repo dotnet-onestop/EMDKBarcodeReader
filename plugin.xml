@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="EmdkBarcodeReaderPlugin"
+    version="1.0.0">
+    <name>EmdkBarcodeReaderPlugin</name>
+    <description>EmdkBarcodeReaderPlugin</description>
+    <license>Apache 2.0</license>
+    <keywords>EmdkBarcodeReaderPlugin</keywords>
+    <repo></repo>
+    <issue></issue>
+
+    <js-module src="www/EmdkBarcodeReaderPlugin.js" name="EmdkBarcodeReaderPlugin">
+        <clobbers target="EmdkBarcodeReaderPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+    
+    
+		<config-file target="AndroidManifest.xml" parent="/*">
+			<!-- Permission needed to access EMDK -->
+			<uses-permission android:name="com.symbol.emdk.permission.EMDK" />
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">	
+			<uses-library android:name="com.symbol.emdk" android:required="false" />
+		</config-file>
+		
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="EmdkBarcodeReaderPlugin" >
+                <param name="android-package" value="EmdkBarcodeReaderPlugin"/>
+            </feature>
+        </config-file>
+		
+       <source-file src="src/android/EmdkBarcodeReaderPlugin.java" target-dir="src/" />
+		<source-file src="src/android/emdk/com.symbol.emdk.jar" target-dir="emdk/" />
+		<framework src="src/android/plugin.gradle" custom="true" type="gradleReference" />
+       
+    </platform>
+
+</plugin>

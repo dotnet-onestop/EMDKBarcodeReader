@@ -6,6 +6,7 @@ import com.symbol.emdk.EMDKResults;
 import com.symbol.emdk.barcode.BarcodeManager;
 import com.symbol.emdk.barcode.ScanDataCollection;
 import com.symbol.emdk.barcode.Scanner;
+import com.symbol.emdk.barcode.ScannerConfig;
 import com.symbol.emdk.barcode.ScannerException;
 import com.symbol.emdk.barcode.ScannerInfo;
 import com.symbol.emdk.barcode.ScannerResults;
@@ -254,24 +255,25 @@ public class EmdkBarcodeReaderPlugin extends CordovaPlugin implements EMDKManage
 
 
     /***
-     * this can be used to set the required chatecteristics if needed
+     * this can be used to set the required characteristics if needed
      */
     private void setDecoders() {
 
-
-     /*   if (scanner != null) {
+        if (scanner != null) {
             try {
                 ScannerConfig config = scanner.getConfig();
-                config.readerParams.readerSpecific.cameraSpecific.illuminationMode = ScannerConfig.IlluminationMode.OFF;
-                config.readerParams.readerSpecific.imagerSpecific.illuminationBrightness =3;
-                config.readerParams.readerSpecific.laserSpecific.powerMode = ScannerConfig.PowerMode.OPTIMIZED;
+                //config.readerParams.readerSpecific.cameraSpecific.illuminationMode = ScannerConfig.IlluminationMode.OFF;
+                //config.readerParams.readerSpecific.imagerSpecific.illuminationBrightness =3;
+                //config.readerParams.readerSpecific.laserSpecific.powerMode = ScannerConfig.PowerMode.OPTIMIZED;
 
+                // Set Supplemental Mode as Auto
+                config.decoderParams.upcEanParams.supplementalMode = ScannerConfig.SupplementalMode.AUTO;
 
                 scanner.setConfig(config);
             } catch (ScannerException e) {
                 Log.e(TAG, "Status: " + e.getMessage());
             }
-        }*/
+        }
     }
 
     /***
@@ -364,6 +366,7 @@ public class EmdkBarcodeReaderPlugin extends CordovaPlugin implements EMDKManage
                             Log.e(TAG, Log.getStackTraceString(exception));
                         }
                         if (!scanner.isReadPending()) {
+                            setDecoders();
                             scanner.read();
                         }
                     } catch (Exception e) {
